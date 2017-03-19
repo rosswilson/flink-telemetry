@@ -6,11 +6,30 @@ For a while now I've been levelling up on my DevOps skills, and have developed a
 
 ## Getting Started
 
-To run and test the application use SBT invoke: `sbt run`
+In order to run the application from within IntelliJ, you have to select the classpath of the 'mainRunner' module in the run/debug configurations. Open 'Run -> Edit configurations...' and then select 'mainRunner' from the "Use classpath of module" select box.
 
-In order to run the application from within IntelliJ, you have to select the classpath of the 'mainRunner' module in the run/debug configurations.
+1. In a terminal window, run `nc -l 9000`.
+2. In IntelliJ, run `SocketMetricDifference`.
+3. The your terminal window, send metrics like:
 
-Simply open 'Run -> Edit configurations...' and then select 'mainRunner' from the "Use classpath of module" select box.
+  ```
+  a-start-100
+  a-end-200
+  b-start-450
+  c-start-300
+  c-end-600
+  b-end-600
+  ```
+
+4. You'll get some output in IntelliJ like:
+
+  ```scala
+  Metric(a,timeTaken,100)
+  Metric(c,timeTaken,300)
+  Metric(b,timeTaken,150)
+  ```
+
+Your input is split by whitespace (so new lines, spaces, or tabs all work). The format is `[key_id]-[metric_name]-[metric_value]`. The `key_id` acts like a primary key, the pattern only considers events with matching keys.
 
 ## Complex Event Processing Example
 

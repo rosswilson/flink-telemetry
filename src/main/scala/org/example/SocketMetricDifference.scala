@@ -2,11 +2,8 @@ package org.example
 
 import org.apache.flink.cep.scala.CEP
 import org.apache.flink.cep.scala.pattern.Pattern
-import org.apache.flink.streaming.api.TimeCharacteristic
 import org.apache.flink.streaming.api.scala.StreamExecutionEnvironment
 import org.apache.flink.api.scala._
-
-import scala.collection.mutable
 
 case class Metric(id: String, key: String, value: Int)
 
@@ -22,8 +19,6 @@ object SocketMetricDifference {
     val port = args(1).toInt
 
     val env = StreamExecutionEnvironment.getExecutionEnvironment
-
-    env.setStreamTimeCharacteristic(TimeCharacteristic.EventTime)
 
     val text = env.socketTextStream(hostName, port)
 
