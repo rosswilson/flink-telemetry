@@ -43,17 +43,19 @@ def calculateLoadTime(pattern: scala.collection.mutable.Map[String, Metric]) = {
 }
 ```
 
+### Benefits
+
 There's a few benefits of this approach:
 
 * The client is dumb. It sends simple key/value events, with little processing or overhead.
 * CEP offers huge opportunities for highly-sophisticated processing server-side.
-* In the functional sense, we reduce the raw data down into more valuable metrics (with real business value)
+* The CEP rules are declarative, rather than procedural. Meaning they're easy to understand and reason about.
+* It's realtime, actions can be triggered within seconds of a matching event pattern.
 
-We can also incorporate time into the processing rules. e.g. We could create a CEP rule like:
+### Time
 
-```
-Start with an `APP_START` event
-Then any number of `ADD_PRODUCT_TO_BASKET` events
-If there _hasn't_ been a `SUCCESSFUL_CHECKOUT` event within 24 hours
-Trigger an `ABANDONED_CART_EMAIL`
-```
+We can also incorporate time into the processing rules. We could detect abandoned shopping carts with CEP:
+
+Start with an `APP_START` event.
+Then match any number of `ADD_PRODUCT_TO_BASKET` events.
+If there _hasn't_ been a `SUCCESSFUL_CHECKOUT` event within 24 hoursm, trigger an `ABANDONED_CART_EMAIL`
