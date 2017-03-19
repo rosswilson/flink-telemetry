@@ -6,9 +6,9 @@ For a while now I've been levelling up on my DevOps skills, and have developed a
 
 ## Getting Started
 
-To run and test your application use SBT invoke: `sbt run`
+To run and test the application use SBT invoke: `sbt run`
 
-In order to run your application from within IntelliJ, you have to select the classpath of the 'mainRunner' module in the run/debug configurations.
+In order to run the application from within IntelliJ, you have to select the classpath of the 'mainRunner' module in the run/debug configurations.
 
 Simply open 'Run -> Edit configurations...' and then select 'mainRunner' from the "Use classpath of module" select box.
 
@@ -58,4 +58,4 @@ We can also incorporate time into the processing rules. We could detect abandone
 
 Start with an `APP_START` event.
 Then match any number of `ADD_PRODUCT_TO_BASKET` events.
-If there _hasn't_ been a `SUCCESSFUL_CHECKOUT` event within 24 hoursm, trigger an `ABANDONED_CART_EMAIL`
+If there _hasn't_ been a `SUCCESSFUL_CHECKOUT` event within 24 hours, trigger an `ABANDONED_CART_EMAIL`
